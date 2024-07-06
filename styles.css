@@ -18,10 +18,8 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 20px; /* Расстояние между элементами */
 }
 
 .training-button {
     cursor: pointer;
-    margin-bottom: 20px; /* Расстояние между кнопкой и вторым изображением */
 }
