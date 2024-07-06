@@ -3,7 +3,6 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Arial, sans-serif;
-    margin-top: 100px;
     min-height: 100vh;
     background-color: #f4f4f4;
 }
@@ -21,9 +20,10 @@ img {
 }
 
 .training-button {
-    width: 10%; /* Уменьшаем размер кнопки в 5 раз */
+    width: 100px;
     height: auto;
     cursor: pointer;
+    align-items: center;
 }
 
 .training-button:hover {
