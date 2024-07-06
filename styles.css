@@ -23,8 +23,6 @@ img {
 .training-button {
     width:50%;
     height:50%;
-    background-color: transparent;
-    font-size: 16px;
     cursor: pointer;
 }
 
