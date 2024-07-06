@@ -4,13 +4,14 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #ffffff; /* Белый фон для всей страницы */
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffffff; /* Белый фон для контейнера */
 }
 
 img {
