@@ -21,7 +21,6 @@ img {
 }
 
 .spacer {
-    height: 20px; /* Высота пробела между изображениями и кнопкой */
     width: 100%;
     background-color: #ffffff; /* Белый цвет фона */
 }
