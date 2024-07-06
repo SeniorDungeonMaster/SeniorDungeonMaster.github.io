@@ -17,14 +17,18 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 20px;
+}
+
+.spacer {
+    height: 20px; /* Высота пробела между изображениями и кнопкой */
+    width: 100%;
+    background-color: #ffffff; /* Белый цвет фона */
 }
 
 .training-button {
     width: 100px;
     height: auto;
     cursor: pointer;
-    align-items: center;
 }
 
 .training-button:hover {
