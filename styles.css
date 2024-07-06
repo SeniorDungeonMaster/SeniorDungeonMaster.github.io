@@ -21,8 +21,8 @@ img {
 }
 
 .training-button {
-    width:50%;
-    height:50%;
+    width: 10%; /* Уменьшаем размер кнопки в 5 раз */
+    height: auto;
     cursor: pointer;
 }
 
