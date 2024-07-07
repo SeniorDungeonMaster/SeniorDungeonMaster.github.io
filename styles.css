@@ -26,6 +26,11 @@ img {
     background-color: #ffffff; /* Белый цвет фона */
 }
 
+.spacer_black {
+    width: 100%;
+    background-color: #000000; /* Белый цвет фона */
+}
+
 .training-button {
     width: 170px;
     height: auto;
