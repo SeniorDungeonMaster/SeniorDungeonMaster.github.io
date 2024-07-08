@@ -43,7 +43,7 @@ img {
 
 .button-container {
     display: flex;
-    width: 100%; /* Make the container full-width for alignment */
+    width: 70%;
 }
 .button-container img {
     width: 80px; /* Ensure all buttons have the same width */
