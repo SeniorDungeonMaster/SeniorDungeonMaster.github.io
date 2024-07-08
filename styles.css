@@ -43,9 +43,7 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-around; /* Distributes the buttons evenly */
     width: 100%; /* Make the container full-width for alignment */
-    margin: 20px 0; /* Add some vertical margin for spacing */
 }
 .button-container img {
     width: 80px; /* Ensure all buttons have the same width */
