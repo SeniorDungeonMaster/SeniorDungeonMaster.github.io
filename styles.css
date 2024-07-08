@@ -44,6 +44,7 @@ img {
 .button-container {
     display: flex;
     width: 70%;
+    margin: 20px 0; 
 }
 .button-container img {
     width: 80px; /* Ensure all buttons have the same width */
