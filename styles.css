@@ -31,18 +31,12 @@ img {
     height: 24px; /* Высота отступа между блоками */
 }
 
-.spacer_black {
-    width: 100%;
-    background-color: #000000; /* Черный цвет фона */
-    height: 24px; /* Высота отступа между блоками */
-}
-
 .training-button {
     width: 80%; /* Увеличение ширины кнопок */
     max-width: 300px; /* Ограничение максимальной ширины */
     height: auto;
     cursor: pointer;
-    margin: 0 0 24px; /* Увеличен отступ снизу */
+    margin: 0 0 64px; /* Увеличен отступ снизу */
 }
 
 .training-button:hover {
