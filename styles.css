@@ -71,12 +71,12 @@ img {
 
 @media (min-width: 1180px) {
     .container {
-        width: 70%;
+        width: 120%;
     }
 }
 
 @media (min-width: 1380px) {
     .container {
-        width: 55%;
+        width: 155%;
     }
 }
