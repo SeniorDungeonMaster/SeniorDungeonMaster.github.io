@@ -48,7 +48,7 @@ img {
     justify-content: space-around;
     width: 80%; /* Увеличение ширины контейнера кнопок */
     max-width: 800px; /* Ограничение максимальной ширины */
-    margin: 40px 0; /* Увеличен отступ сверху и снизу */
+    margin: 80px 0; /* Увеличен отступ сверху и снизу */
 }
 
 .button-container img {
