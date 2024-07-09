@@ -5,6 +5,7 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     background-color: #ffffff; /* Белый фон для всей страницы */
+    margin: 0;
 }
 
 .container {
@@ -12,29 +13,36 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff; /* Белый фон для контейнера */
+    width: 100%;
+    max-width: 800px; /* Ограничение ширины для больших экранов */
+    padding: 0 20px;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 18px;
+    margin-bottom: 24px; /* Увеличен отступ между блоками */
 }
 
 .spacer {
     width: 100%;
     background-color: #ffffff; /* Белый цвет фона */
+    height: 24px; /* Высота отступа между блоками */
 }
 
 .spacer_black {
     width: 100%;
-    background-color: #000000; /* Белый цвет фона */
+    background-color: #000000; /* Черный цвет фона */
+    height: 24px; /* Высота отступа между блоками */
 }
 
 .training-button {
-    width: 170px;
+    width: 80%; /* Увеличение ширины кнопок */
+    max-width: 300px; /* Ограничение максимальной ширины */
     height: auto;
     cursor: pointer;
+    margin: 0 0 24px; /* Увеличен отступ снизу */
 }
 
 .training-button:hover {
@@ -43,34 +51,27 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-around; 
-    width: 70%;
-    margin: 40px 0; 
+    justify-content: space-around;
+    width: 80%; /* Увеличение ширины контейнера кнопок */
+    max-width: 800px; /* Ограничение максимальной ширины */
+    margin: 40px 0; /* Увеличен отступ сверху и снизу */
 }
+
 .button-container img {
-    width: 80px; /* Ensure all buttons have the same width */
+    width: 100px; /* Увеличение ширины кнопок */
     height: auto;
     cursor: pointer;
 }
 
-
-.vk-button {
-    width: 80px;
+.vk-button, .tg-button, .telephone-button {
+    width: 100px; /* Увеличение ширины кнопок */
     height: auto;
     cursor: pointer;
-    align-items: left;
+    align-items: center;
 }
 
-.tg-button {
-    width: 80px;
-    height: auto;
-    cursor: pointer;
-    align-items: left;
-}
-
-.telephone-button {
-    width: 80px;
-    height: auto;
-    cursor: pointer;
-    align-items: left;
+@media (min-width: 1024px) {
+    .container {
+        width: 70%;
+    }
 }
