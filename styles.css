@@ -5,7 +5,6 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     background-color: #ffffff; 
-    margin: 0;
 }
 
 .container {
@@ -13,34 +12,29 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff; 
-    width: 100%;
-    max-width: 800px; 
-    padding: 0 20px;
 }
 
 img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 64px; 
+    margin-bottom: 18px;
 }
 
 .spacer {
     width: 100%;
     background-color: #ffffff; 
-    height: 24px; 
 }
 
-.spacer-button {
+.spacer_black {
     width: 100%;
-    background-color: #ffffff; 
+    background-color: #000000; 
 }
 
 .training-button {
-    max-width: 200px; 
+    width: 170px;
     height: auto;
     cursor: pointer;
-    margin: 0 0 10px; 
 }
 
 .training-button:hover {
@@ -49,33 +43,34 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-around;
-    width: 80%; 
-    max-width: 800px; 
-    margin: 80px 0; 
+    justify-content: space-around; 
+    width: 70%;
+    margin: 40px 0; 
 }
-
 .button-container img {
-    width: 100px; 
+    width: 80px; 
     height: auto;
     cursor: pointer;
 }
 
-.vk-button, .tg-button, .telephone-button {
-    width: 100px; 
+
+.vk-button {
+    width: 80px;
     height: auto;
     cursor: pointer;
-    align-items: center;
+    align-items: left;
 }
 
-@media (min-width: 1180px) {
-    .container {
-        width: 120%;
-    }
+.tg-button {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+    align-items: left;
 }
 
-@media (min-width: 1380px) {
-    .container {
-        width: 155%;
-    }
+.telephone-button {
+    width: 80px;
+    height: auto;
+    cursor: pointer;
+    align-items: left;
 }
