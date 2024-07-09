@@ -22,7 +22,7 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 24px; /* Увеличен отступ между блоками */
+    margin-bottom: 64px; /* Увеличен отступ между блоками */
 }
 
 .spacer {
