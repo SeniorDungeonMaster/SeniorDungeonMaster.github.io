@@ -37,8 +37,7 @@ img {
 }
 
 .training-button {
-    width: 80%; 
-    max-width: 300px; 
+    max-width: 200px; 
     height: auto;
     cursor: pointer;
     margin: 0 0 10px; 
