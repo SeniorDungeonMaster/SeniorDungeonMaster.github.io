@@ -4,7 +4,7 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-color: #ffffff; /* Белый фон для всей страницы */
+    background-color: #ffffff; 
     margin: 0;
 }
 
@@ -12,9 +12,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff; /* Белый фон для контейнера */
+    background-color: #ffffff; 
     width: 100%;
-    max-width: 800px; /* Ограничение ширины для больших экранов */
+    max-width: 800px; 
     padding: 0 20px;
 }
 
@@ -22,21 +22,26 @@ img {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 64px; /* Увеличен отступ между блоками */
+    margin-bottom: 64px; 
 }
 
 .spacer {
     width: 100%;
-    background-color: #ffffff; /* Белый цвет фона */
-    height: 24px; /* Высота отступа между блоками */
+    background-color: #ffffff; 
+    height: 24px; 
+}
+
+.spacer-button {
+    width: 100%;
+    background-color: #ffffff; 
 }
 
 .training-button {
-    width: 80%; /* Увеличение ширины кнопок */
-    max-width: 300px; /* Ограничение максимальной ширины */
+    width: 80%; 
+    max-width: 300px; 
     height: auto;
     cursor: pointer;
-    margin: 0 0 10px; /* Увеличен отступ снизу */
+    margin: 0 0 10px; 
 }
 
 .training-button:hover {
@@ -46,26 +51,32 @@ img {
 .button-container {
     display: flex;
     justify-content: space-around;
-    width: 80%; /* Увеличение ширины контейнера кнопок */
-    max-width: 800px; /* Ограничение максимальной ширины */
-    margin: 80px 0; /* Увеличен отступ сверху и снизу */
+    width: 80%; 
+    max-width: 800px; 
+    margin: 80px 0; 
 }
 
 .button-container img {
-    width: 100px; /* Увеличение ширины кнопок */
+    width: 100px; 
     height: auto;
     cursor: pointer;
 }
 
 .vk-button, .tg-button, .telephone-button {
-    width: 100px; /* Увеличение ширины кнопок */
+    width: 100px; 
     height: auto;
     cursor: pointer;
     align-items: center;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1180px) {
     .container {
         width: 70%;
+    }
+}
+
+@media (min-width: 1380px) {
+    .container {
+        width: 55%;
     }
 }
