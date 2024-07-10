@@ -5,29 +5,8 @@ body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
     background-color: #ffffff;
-    transform-origin: center;
 }
 
-/* Медиа-запросы для умеренного масштабирования */
-@media (min-width: 1600px) {
-    body {
-        transform: scale(1.2);
-    }
-}
-
-@media (min-width: 1920px) {
-    body {
-        transform: scale(1.3);
-    }
-}
-
-@media (min-width: 2560px) {
-    body {
-        transform: scale(1.4);
-    }
-}
-
-/* Оставшийся CSS */
 .container {
     display: flex;
     flex-direction: column;
@@ -108,7 +87,7 @@ img {
     align-items: left;
 }
 
-/* Media Queries для кнопок */
+/* Media Queries */
 @media (max-width: 1200px) {
     .training-button {
         width: 220px;
