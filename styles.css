@@ -1,7 +1,4 @@
-/* Сброс отступов и полей для всех элементов */
-* {
-    box-sizing: border-box;
-}
+
 
 body {
     display: flex;
