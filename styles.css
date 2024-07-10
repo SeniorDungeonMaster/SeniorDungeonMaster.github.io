@@ -1,4 +1,9 @@
-
+/* Сброс отступов и полей для всех элементов */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     display: flex;
@@ -76,6 +81,7 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
+    margin-bottom: 10px; /* Уменьшенное расстояние между кнопками */
 }
 
 .tg-button {
@@ -83,6 +89,7 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
+    margin-bottom: 10px; /* Уменьшенное расстояние между кнопками */
 }
 
 .telephone-button {
@@ -111,16 +118,16 @@ img {
     }
 }
 
-/* Уменьшение на мобильных устройствах */
+/* Немного приближение на мобильных устройствах */
 @media (max-width: 576px) {
     body {
-        transform: scale(0.8);
+        transform: scale(0.9);
     }
 }
 
 @media (max-width: 400px) {
     body {
-        transform: scale(0.7);
+        transform: scale(0.85);
     }
 }
 
