@@ -1,10 +1,3 @@
-/* Сброс отступов и полей для всех элементов */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     display: flex;
     justify-content: center;
@@ -15,13 +8,44 @@ body {
     transform-origin: center;
 }
 
+/* Умеренное увеличение на больших экранах */
+@media (min-width: 1600px) {
+    body {
+        transform: scale(1.1);
+    }
+}
+
+@media (min-width: 1920px) {
+    body {
+        transform: scale(1.2);
+    }
+}
+
+@media (min-width: 2560px) {
+    body {
+        transform: scale(1.3);
+    }
+}
+
+/* Уменьшение на мобильных устройствах */
+@media (max-width: 576px) {
+    body {
+        transform: scale(0.8);
+    }
+}
+
+@media (max-width: 400px) {
+    body {
+        transform: scale(0.7);
+    }
+}
+
+/* Оставшийся CSS */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    width: 100%;
-    height: 100vh; /* Занимает всю высоту экрана */
 }
 
 img {
@@ -81,7 +105,6 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
-    margin-bottom: 10px; /* Уменьшенное расстояние между кнопками */
 }
 
 .tg-button {
@@ -89,7 +112,6 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
-    margin-bottom: 10px; /* Уменьшенное расстояние между кнопками */
 }
 
 .telephone-button {
@@ -97,38 +119,6 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
-}
-
-/* Media Queries для умеренного увеличения */
-@media (min-width: 1600px) {
-    body {
-        transform: scale(1.1);
-    }
-}
-
-@media (min-width: 1920px) {
-    body {
-        transform: scale(1.2);
-    }
-}
-
-@media (min-width: 2560px) {
-    body {
-        transform: scale(1.3);
-    }
-}
-
-/* Немного приближение на мобильных устройствах */
-@media (max-width: 576px) {
-    body {
-        transform: scale(0.9);
-    }
-}
-
-@media (max-width: 400px) {
-    body {
-        transform: scale(0.85);
-    }
 }
 
 /* Media Queries для кнопок */
