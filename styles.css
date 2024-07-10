@@ -14,10 +14,10 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    max-width: 1800px; /* Увеличена максимальная ширина контейнера */
-    width: 100%; /* Увеличена ширина контейнера */
-    padding: 0; /* Удалены отступы */
-    box-sizing: border-box; /* Учитываем отступы в ширину */
+    max-width: 1800px;
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 img {
@@ -73,42 +73,42 @@ img {
 }
 
 .vk-button {
-    width: 15%; /* Ещё уменьшена ширина кнопок */
+    width: 15%;
     height: auto;
     cursor: pointer;
-    margin: 0 5px; /* Ещё уменьшены отступы */
+    margin: 0 5px;
 }
 
 .tg-button {
-    width: 15%; /* Ещё уменьшена ширина кнопок */
+    width: 15%;
     height: auto;
     cursor: pointer;
-    margin: 0 5px; /* Ещё уменьшены отступы */
+    margin: 0 5px;
 }
 
 .telephone-button {
-    width: 15%; /* Ещё уменьшена ширина кнопок */
+    width: 15%;
     height: auto;
     cursor: pointer;
-    margin: 5px 5px; /* Ещё уменьшены отступы */
+    margin: 5px 5px;
 }
 
 /* Media Queries */
 @media (max-width: 1600px) {
     .container {
-        max-width: 1500px; /* Увеличена максимальная ширина контейнера */
+        max-width: 1500px;
     }
 }
 
 @media (max-width: 1400px) {
     .container {
-        max-width: 1300px; /* Увеличена максимальная ширина контейнера */
+        max-width: 1300px;
     }
 }
 
 @media (max-width: 1200px) {
     .container {
-        max-width: 1100px; /* Увеличена максимальная ширина контейнера */
+        max-width: 1100px;
     }
     .training-button {
         width: 220px;
@@ -117,14 +117,14 @@ img {
         width: 90px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 20%; /* Изменена ширина кнопок для адаптации */
-        margin: 0 5px; /* Ещё уменьшены отступы */
+        width: 20%;
+        margin: 0 5px;
     }
 }
 
 @media (max-width: 992px) {
     .container {
-        max-width: 900px; /* Увеличена максимальная ширина контейнера */
+        max-width: 900px;
     }
     .training-button {
         width: 190px;
@@ -133,14 +133,14 @@ img {
         width: 80px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 25%; /* Изменена ширина кнопок для адаптации */
-        margin: 0 5px; /* Ещё уменьшены отступы */
+        width: 25%;
+        margin: 0 5px;
     }
 }
 
 @media (max-width: 768px) {
     .container {
-        max-width: 700px; /* Увеличена максимальная ширина контейнера */
+        max-width: 700px;
     }
     .training-button {
         width: 160px;
@@ -149,14 +149,14 @@ img {
         width: 70px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 30%; /* Изменена ширина кнопок для адаптации */
-        margin: 0 5px; /* Ещё уменьшены отступы */
+        width: 30%;
+        margin: 0 5px;
     }
 }
 
 @media (max-width: 576px) {
     .container {
-        max-width: 500px; /* Увеличена максимальная ширина контейнера */
+        max-width: 500px;
     }
     .training-button {
         width: 130px;
@@ -165,7 +165,24 @@ img {
         width: 60px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 40%; /* Изменена ширина кнопок для адаптации */
-        margin: 0 5px; /* Ещё уменьшены отступы */
+        width: 40%;
+        margin: 0 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        max-width: 350px; /* Further reduce max-width for smaller screens */
+        padding: 10px; /* Add padding to zoom out slightly */
+    }
+    .training-button {
+        width: 100px;
+    }
+    .button-container img {
+        width: 50px;
+    }
+    .vk-button, .tg-button, .telephone-button {
+        width: 45%;
+        margin: 0 5px;
     }
 }
