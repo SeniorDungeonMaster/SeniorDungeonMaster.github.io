@@ -13,8 +13,8 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    max-width: 1200px; /* Максимальная ширина контейнера */
-    width: 100%;
+    max-width: 1600px; /* Увеличена максимальная ширина контейнера */
+    width: 90%; /* Увеличена ширина контейнера */
     padding: 0 20px; /* Отступы для адаптации */
     box-sizing: border-box; /* Учитываем отступы в ширину */
 }
@@ -94,6 +94,9 @@ img {
 
 /* Media Queries */
 @media (max-width: 1200px) {
+    .container {
+        width: 95%; /* Увеличена ширина контейнера для экранов меньше 1200px */
+    }
     .training-button {
         width: 220px;
     }
@@ -106,6 +109,9 @@ img {
 }
 
 @media (max-width: 992px) {
+    .container {
+        width: 100%; /* Увеличена ширина контейнера для экранов меньше 992px */
+    }
     .training-button {
         width: 190px;
     }
