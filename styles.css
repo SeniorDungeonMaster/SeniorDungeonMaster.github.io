@@ -63,7 +63,7 @@ img {
 .button-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px; /* Adjust the gap between columns */
+    gap: 30px; /* Adjust the gap between columns */
     width: 70%;
 }
 
