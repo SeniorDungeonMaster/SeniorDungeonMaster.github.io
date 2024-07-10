@@ -55,21 +55,21 @@ img {
 
 
 .vk-button {
-    width: 80px;
+    width: 80%;
     height: auto;
     cursor: pointer;
     align-items: left;
 }
 
 .tg-button {
-    width: 80px;
+    width: 80%;
     height: auto;
     cursor: pointer;
     align-items: left;
 }
 
 .telephone-button {
-    width: 80px;
+    width: 80%;
     height: auto;
     cursor: pointer;
     align-items: left;
