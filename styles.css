@@ -4,35 +4,14 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-color: #ffffff;
-    transform-origin: center;
+    background-color: #ffffff; 
 }
 
-/* Медиа-запросы для умеренного масштабирования */
-@media (min-width: 1600px) {
-    body {
-        transform: scale(1.2);
-    }
-}
-
-@media (min-width: 1920px) {
-    body {
-        transform: scale(1.3);
-    }
-}
-
-@media (min-width: 2560px) {
-    body {
-        transform: scale(1.4);
-    }
-}
-
-/* Оставшийся CSS */
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #ffffff; 
 }
 
 img {
@@ -43,30 +22,30 @@ img {
 
 .spacer {
     width: 100%;
-    background-color: #ffffff;
+    background-color: #ffffff; 
     margin-bottom: 80px;
 }
 
-.spacer-min {
+.spacer-min{
     width: 100%;
-    background-color: #000000;
+    background-color: #000000; 
     margin-bottom: 20px;
 }
 
-.spacer-mid {
+.spacer-mid{
     width: 100%;
-    background-color: #000000;
+    background-color: #000000; 
     margin-bottom: 50px;
 }
 
-.spacer-mini {
+.spacer-mini{
     width: 100%;
-    background-color: #000000;
+    background-color: #000000; 
     margin-bottom: 10px;
 }
 
 .training-button {
-    width: 250px;
+    width: 170px;
     height: auto;
     cursor: pointer;
 }
@@ -77,82 +56,33 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-around; 
     width: 70%;
 }
-
 .button-container img {
-    width: 100px;
+    width: 80px; 
     height: auto;
     cursor: pointer;
 }
 
+
 .vk-button {
-    width: 70%;
+    width: 60%;
     height: auto;
     cursor: pointer;
     align-items: left;
 }
 
 .tg-button {
-    width: 70%;
+    width: 60%;
     height: auto;
     cursor: pointer;
     align-items: left;
 }
 
 .telephone-button {
-    width: 70%;
+    width: 60%;
     height: auto;
     cursor: pointer;
     align-items: left;
-}
-
-/* Media Queries для кнопок */
-@media (max-width: 1200px) {
-    .training-button {
-        width: 220px;
-    }
-    .button-container img {
-        width: 90px;
-    }
-    .vk-button, .tg-button, .telephone-button {
-        width: 60%;
-    }
-}
-
-@media (max-width: 992px) {
-    .training-button {
-        width: 190px;
-    }
-    .button-container img {
-        width: 80px;
-    }
-    .vk-button, .tg-button, .telephone-button {
-        width: 50%;
-    }
-}
-
-@media (max-width: 768px) {
-    .training-button {
-        width: 160px;
-    }
-    .button-container img {
-        width: 70px;
-    }
-    .vk-button, .tg-button, .telephone-button {
-        width: 40%;
-    }
-}
-
-@media (max-width: 576px) {
-    .training-button {
-        width: 130px;
-    }
-    .button-container img {
-        width: 60px;
-    }
-    .vk-button, .tg-button, .telephone-button {
-        width: 30%;
-    }
 }
