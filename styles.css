@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     background-color: #ffffff;
     margin: 0;
+    padding: 0;
 }
 
 .container {
@@ -13,9 +14,9 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #ffffff;
-    max-width: 1600px; /* Увеличена максимальная ширина контейнера */
-    width: 90%; /* Увеличена ширина контейнера */
-    padding: 0 20px; /* Отступы для адаптации */
+    max-width: 1800px; /* Увеличена максимальная ширина контейнера */
+    width: 100%; /* Увеличена ширина контейнера */
+    padding: 0; /* Удалены отступы */
     box-sizing: border-box; /* Учитываем отступы в ширину */
 }
 
@@ -72,30 +73,42 @@ img {
 }
 
 .vk-button {
-    width: 70%;
+    width: 20%; /* Уменьшена ширина кнопок */
     height: auto;
     cursor: pointer;
-    align-items: left;
+    margin: 0 10px; /* Уменьшены отступы */
 }
 
 .tg-button {
-    width: 70%;
+    width: 20%; /* Уменьшена ширина кнопок */
     height: auto;
     cursor: pointer;
-    align-items: left;
+    margin: 0 10px; /* Уменьшены отступы */
 }
 
 .telephone-button {
-    width: 70%;
+    width: 20%; /* Уменьшена ширина кнопок */
     height: auto;
     cursor: pointer;
-    align-items: left;
+    margin: 0 10px; /* Уменьшены отступы */
 }
 
 /* Media Queries */
+@media (max-width: 1600px) {
+    .container {
+        max-width: 1500px; /* Увеличена максимальная ширина контейнера */
+    }
+}
+
+@media (max-width: 1400px) {
+    .container {
+        max-width: 1300px; /* Увеличена максимальная ширина контейнера */
+    }
+}
+
 @media (max-width: 1200px) {
     .container {
-        width: 95%; /* Увеличена ширина контейнера для экранов меньше 1200px */
+        max-width: 1100px; /* Увеличена максимальная ширина контейнера */
     }
     .training-button {
         width: 220px;
@@ -104,13 +117,14 @@ img {
         width: 90px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 60%;
+        width: 25%; /* Изменена ширина кнопок для адаптации */
+        margin: 0 5px; /* Изменены отступы */
     }
 }
 
 @media (max-width: 992px) {
     .container {
-        width: 100%; /* Увеличена ширина контейнера для экранов меньше 992px */
+        max-width: 900px; /* Увеличена максимальная ширина контейнера */
     }
     .training-button {
         width: 190px;
@@ -119,11 +133,15 @@ img {
         width: 80px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 50%;
+        width: 30%; /* Изменена ширина кнопок для адаптации */
+        margin: 0 5px; /* Изменены отступы */
     }
 }
 
 @media (max-width: 768px) {
+    .container {
+        max-width: 700px; /* Увеличена максимальная ширина контейнера */
+    }
     .training-button {
         width: 160px;
     }
@@ -131,11 +149,15 @@ img {
         width: 70px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 40%;
+        width: 40%; /* Изменена ширина кнопок для адаптации */
+        margin: 0 5px; /* Изменены отступы */
     }
 }
 
 @media (max-width: 576px) {
+    .container {
+        max-width: 500px; /* Увеличена максимальная ширина контейнера */
+    }
     .training-button {
         width: 130px;
     }
@@ -143,6 +165,7 @@ img {
         width: 60px;
     }
     .vk-button, .tg-button, .telephone-button {
-        width: 30%;
+        width: 50%; /* Изменена ширина кнопок для адаптации */
+        margin: 0 5px; /* Изменены отступы */
     }
 }
