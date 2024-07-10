@@ -6,6 +6,7 @@ body {
     min-height: 100vh;
     background-color: #ffffff;
     transform-origin: center;
+    margin: 0; /* Убираем отступы */
 }
 
 /* Умеренное увеличение на больших экранах */
