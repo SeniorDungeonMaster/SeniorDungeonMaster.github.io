@@ -1,6 +1,5 @@
 /* Сброс отступов и полей для всех элементов */
 * {
-    margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
