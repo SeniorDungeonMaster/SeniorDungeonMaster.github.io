@@ -74,7 +74,7 @@ img {
 }
 
 .vk-button, .tg-button, .telephone-button {
-    width: 100%;
+    width: 80%;
     height: auto;
     cursor: pointer;
 }
