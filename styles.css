@@ -76,7 +76,7 @@ img {
     width: 15%;
     height: auto;
     cursor: pointer;
-    margin: 0 100px; /* Adjust margin for desktop view */
+    margin: 0 150px; 
 }
 
 /* Media Queries */
