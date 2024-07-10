@@ -90,7 +90,7 @@ img {
     width: 15%; /* Ещё уменьшена ширина кнопок */
     height: auto;
     cursor: pointer;
-    margin: 0 5px; /* Ещё уменьшены отступы */
+    margin: 5px 5px; /* Ещё уменьшены отступы */
 }
 
 /* Media Queries */
