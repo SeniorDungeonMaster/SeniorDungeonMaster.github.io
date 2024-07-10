@@ -74,8 +74,8 @@ img {
 }
 
 .vk-button, .tg-button, .telephone-button {
-    width: 50px; /* Significantly reduced width */
-    height: 50px; /* Significantly reduced height */
+    width: 40px; /* Significantly reduced width */
+    height: 40px; /* Significantly reduced height */
     cursor: pointer;
 }
 
