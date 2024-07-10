@@ -63,7 +63,7 @@ img {
 .button-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 30px; /* Adjust the gap between columns */
+    gap: 10px;
     width: 70%;
 }
 
@@ -74,8 +74,8 @@ img {
 }
 
 .vk-button, .tg-button, .telephone-button {
-    width: 80%;
-    height: auto;
+    width: 50px; /* Significantly reduced width */
+    height: 50px; /* Significantly reduced height */
     cursor: pointer;
 }
 
@@ -138,7 +138,7 @@ img {
     .button-container {
         display: flex;
         flex-direction: column;
-        gap: 40px; /* Adjust the gap between rows */
+        gap: 10px;
         width: 100%;
     }
     .button-container img {
