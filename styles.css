@@ -8,22 +8,22 @@ body {
     transform-origin: center;
 }
 
-/* Медиа-запросы для значительного масштабирования */
+/* Медиа-запросы для умеренного масштабирования */
 @media (min-width: 1600px) {
     body {
-        transform: scale(1.5);
+        transform: scale(1.2);
     }
 }
 
 @media (min-width: 1920px) {
     body {
-        transform: scale(2);
+        transform: scale(1.3);
     }
 }
 
 @media (min-width: 2560px) {
     body {
-        transform: scale(2.5);
+        transform: scale(1.4);
     }
 }
 
