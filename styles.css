@@ -32,6 +32,12 @@ img {
     margin-bottom: 20px;
 }
 
+.spacer-mini{
+    width: 100%;
+    background-color: #000000; 
+    margin-bottom: 10px;
+}
+
 .training-button {
     width: 170px;
     height: auto;
