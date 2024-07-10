@@ -27,9 +27,10 @@ img {
     margin-bottom: 100px;
 }
 
-.spacer_black {
+.spacer-min{
     width: 100%;
     background-color: #000000; 
+    margin-bottom: 50px;
 }
 
 .training-button {
