@@ -4,14 +4,14 @@ body {
     align-items: center;
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #ffffff; 
+    background-color: #ffffff;
 }
 
 img {
@@ -22,25 +22,25 @@ img {
 
 .spacer {
     width: 100%;
-    background-color: #ffffff; 
+    background-color: #ffffff;
     margin-bottom: 80px;
 }
 
-.spacer-min{
+.spacer-min {
     width: 100%;
-    background-color: #000000; 
+    background-color: #000000;
     margin-bottom: 20px;
 }
 
-.spacer-mid{
+.spacer-mid {
     width: 100%;
-    background-color: #000000; 
+    background-color: #000000;
     margin-bottom: 50px;
 }
 
-.spacer-mini{
+.spacer-mini {
     width: 100%;
-    background-color: #000000; 
+    background-color: #000000;
     margin-bottom: 10px;
 }
 
@@ -56,15 +56,15 @@ img {
 
 .button-container {
     display: flex;
-    justify-content: space-around; 
+    justify-content: space-around;
     width: 70%;
 }
+
 .button-container img {
-    width: 80px; 
+    width: 80px;
     height: auto;
     cursor: pointer;
 }
-
 
 .vk-button {
     width: 60%;
@@ -85,4 +85,53 @@ img {
     height: auto;
     cursor: pointer;
     align-items: left;
+}
+
+/* Media Queries */
+@media (max-width: 1200px) {
+    .training-button {
+        width: 150px;
+    }
+    .button-container img {
+        width: 70px;
+    }
+    .vk-button, .tg-button, .telephone-button {
+        width: 50%;
+    }
+}
+
+@media (max-width: 992px) {
+    .training-button {
+        width: 130px;
+    }
+    .button-container img {
+        width: 60px;
+    }
+    .vk-button, .tg-button, .telephone-button {
+        width: 40%;
+    }
+}
+
+@media (max-width: 768px) {
+    .training-button {
+        width: 110px;
+    }
+    .button-container img {
+        width: 50px;
+    }
+    .vk-button, .tg-button, .telephone-button {
+        width: 30%;
+    }
+}
+
+@media (max-width: 576px) {
+    .training-button {
+        width: 90px;
+    }
+    .button-container img {
+        width: 40px;
+    }
+    .vk-button, .tg-button, .telephone-button {
+        width: 20%;
+    }
 }
