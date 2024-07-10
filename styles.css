@@ -138,7 +138,7 @@ img {
     .button-container {
         display: flex;
         flex-direction: column;
-        gap: 10px; /* Adjust the gap between rows */
+        gap: 40px; /* Adjust the gap between rows */
         width: 100%;
     }
     .button-container img {
