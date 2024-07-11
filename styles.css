@@ -61,36 +61,22 @@ img {
 }
 
 .button-container {
-    gap: 40px;
-    width: 50%;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust this to increase/decrease space between buttons */
+    width: 100%;
+    padding: 20px 0;
+}
+
+.button-container a {
+    display: flex;
     align-items: center;
 }
 
-.button-container img {
-    width: 50%;
+.vk-button, .tg-button, .telephone-button {
+    width: 100px; /* Adjust the size as needed */
     height: auto;
     cursor: pointer;
-}
-
-.vk-button{
-    width: 40%; 
-    height: auto; 
-    cursor: pointer;
-    align-items: left;
-}
-
-.tg-button{
-    width: 40%;
-    height: auto;
-    cursor: pointer;
-    align-items: center;
-}
-
-.telephone-button{
-    width: 40%;
-    height: auto;
-    cursor: pointer;
-    align-items: right;
 }
 
 /* Media Queries */
@@ -153,10 +139,11 @@ img {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 50%;
-    }
-    .button-container img {
         width: 100%;
+    }
+    .button-container a {
+        width: 100%;
+        justify-content: center;
     }
 }
 
