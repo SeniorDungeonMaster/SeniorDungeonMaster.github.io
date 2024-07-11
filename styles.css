@@ -73,22 +73,22 @@ img {
 }
 
 .vk-button{
-    width: 30%; 
-    height: 30%; 
+    width: 40%; 
+    height: auto; 
     cursor: pointer;
     align-items: left;
 }
 
 .tg-button{
-    width: 30%;
-    height: 30%;
+    width: 40%;
+    height: auto;
     cursor: pointer;
     align-items: center;
 }
 
-.telpehone-button{
-    width: 30%;
-    height: 30%;
+.telephone-button{
+    width: 40%;
+    height: auto;
     cursor: pointer;
     align-items: right;
 }
