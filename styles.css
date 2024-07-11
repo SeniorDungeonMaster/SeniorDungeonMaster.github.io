@@ -23,7 +23,6 @@ body {
 img {
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
 .spacer {
@@ -50,6 +49,20 @@ img {
     margin-bottom: 10px;
 }
 
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px; 
+    margin-top: 20px; 
+}
+
+.button-container img {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+}
+
+
 .training-button {
     width: 250px;
     height: auto;
@@ -60,24 +73,24 @@ img {
     color: gray;
 }
 
-.button-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px; /* Adjust this to increase/decrease space between buttons */
-    width: 100%;
-    padding: 20px 0;
-}
-
-.button-container a {
-    display: flex;
-    align-items: center;
-}
-
-.vk-button, .tg-button, .telephone-button {
-    width: 100px; /* Adjust the size as needed */
+.telephone-button {
+    width: 80%; 
     height: auto;
     cursor: pointer;
 }
+
+.vk-button {
+    width: 80%; 
+    height: auto;
+    cursor: pointer;
+}
+
+.tg-button {
+    width: 80%; 
+    height: auto;
+    cursor: pointer;
+}
+
 
 /* Media Queries */
 @media (max-width: 1600px) {
@@ -138,7 +151,7 @@ img {
     .button-container {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap; /* Allows buttons to wrap to the next line if they don't fit */
+        flex-wrap: wrap; 
         gap: 10px;
         width: 100%;
         justify-content: center;
