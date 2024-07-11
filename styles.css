@@ -64,7 +64,7 @@ img {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
-    width: 40%;
+    width: 50%;
 }
 
 .button-container img {
@@ -100,7 +100,7 @@ img {
         width: 220px;
     }
     .button-container img {
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -112,7 +112,7 @@ img {
         width: 190px;
     }
     .button-container img {
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -124,7 +124,7 @@ img {
         width: 160px;
     }
     .button-container img {
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -139,7 +139,7 @@ img {
         display: flex;
         flex-direction: column;
         gap: 10px;
-        width: 100%;
+        width: 50%;
     }
     .button-container img {
         width: 100%;
@@ -155,6 +155,6 @@ img {
         width: 100px;
     }
     .button-container img {
-        width: 100%;
+        width: 50%;
     }
 }
