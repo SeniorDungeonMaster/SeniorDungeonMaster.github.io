@@ -12,6 +12,7 @@ const result = document.querySelector(".quiz-result");
 const summaryField = document.getElementById("quizSummary");
 
 let currentStep = 0;
+let closeResultTimer;
 
 totalStepText.textContent = String(steps.length);
 
@@ -29,6 +30,7 @@ function setStep(index) {
 }
 
 function openModal() {
+    clearTimeout(closeResultTimer);
     form.reset();
     result.hidden = true;
     document.querySelector(".quiz-footer").hidden = false;
@@ -41,6 +43,7 @@ function openModal() {
 }
 
 function closeModal() {
+    clearTimeout(closeResultTimer);
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("quiz-lock");
@@ -105,6 +108,8 @@ function showResult() {
     if (navigator.clipboard) {
         navigator.clipboard.writeText(summary).catch(() => {});
     }
+
+    closeResultTimer = setTimeout(closeModal, 7000);
 }
 
 openButtons.forEach((button) => {
