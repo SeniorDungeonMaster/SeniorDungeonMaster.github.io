@@ -165,7 +165,8 @@ img {
     transition: transform 180ms ease, opacity 180ms ease;
 }
 
-.quiz-modal {
+.quiz-modal,
+.thanks-modal {
     position: fixed;
     inset: 0;
     z-index: 30;
@@ -176,11 +177,13 @@ img {
     font-family: "Montserrat Alternates", Arial, sans-serif;
 }
 
-.quiz-modal.is-open {
+.quiz-modal.is-open,
+.thanks-modal.is-open {
     display: flex;
 }
 
-.quiz-modal__backdrop {
+.quiz-modal__backdrop,
+.thanks-modal__backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.68);
@@ -197,7 +200,22 @@ img {
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
 }
 
-.quiz-modal__close {
+.thanks-modal__dialog {
+    position: relative;
+    width: min(560px, 100%);
+    min-height: 340px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(36px, 7vw, 56px) clamp(24px, 6vw, 44px);
+    background: #f7f6f2;
+    color: #000000;
+    border-radius: 10px;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+}
+
+.quiz-modal__close,
+.thanks-modal__close {
     position: absolute;
     top: 14px;
     right: 16px;
@@ -427,24 +445,13 @@ img {
     text-decoration: none;
 }
 
-.quiz-result {
-    min-height: clamp(270px, 34vw, 360px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.quiz-result[hidden] {
-    display: none;
-}
-
 .quiz-thanks {
     max-width: 620px;
     color: #000000;
     font-family: "Poiret One", "Montserrat Alternates", Arial, sans-serif;
     font-weight: 400;
     letter-spacing: 0;
+    text-align: center;
 }
 
 .quiz-thanks h3 {
