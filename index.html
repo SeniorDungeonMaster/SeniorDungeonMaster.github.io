@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" href="/0200-clip-illustration-m.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/0200-clip-illustration-m.png">
@@ -17,7 +20,7 @@
     <div class="container">
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/BLAK1.png?raw=true" alt="Block 1">
         <div class="spacer-min"></div>
-        <a href="https://t.me/stepan_artt" target="_blank">
+        <a href="https://t.me/stepan_artt" target="_blank" rel="noreferrer">
             <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/button.png?raw=true" alt="Хочу обучение" class="training-button">
         </a>
         <div class="spacer"></div>
@@ -27,19 +30,19 @@
         <div class="spacer"></div>
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/pochemu_3.png?raw=true" alt="Block 4">
         <div class="spacer-min"></div>
-        <a href="https://vk.com/id334427394" target="_blank">
+        <a href="https://vk.com/id334427394" target="_blank" rel="noreferrer">
             <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/button2.png?raw=true" alt="Портфолио" class="training-button">
         </a>
         <div class="spacer"></div>
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/chto_vhodit.png?raw=true" alt="Block 5">
         <div class="spacer-min"></div>
-        
+
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/vstrecha_12.png?raw=true" alt="Block 6">
-        
+
         <div class="spacer"></div>
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/vstrecha_34.png?raw=true" alt="Block 7">
         <div class="spacer"></div>
-        
+
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/5zanyatiiii.png?raw=true" alt="Block 7.5">
         <div class="spacer"></div>
         <div class="spacer-min"></div>
@@ -51,13 +54,22 @@
         <div class="spacer-mini"></div>
         <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/10blak10.png?raw=true" alt="Block 10">
         <div class="spacer"></div>
-        <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/blak11.png?raw=true" alt="Block 11">
+        <!--  <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/blak11.png?raw=true" alt="Block 11"> -->
+        <div class="spacer-min"></div>
+
+        <section class="cost-section" aria-labelledby="cost-title">
+            <div class="cost-section__inner">
+                <h2 id="cost-title">Рассчитайте стоимость<br>и получите подарок</h2>
+                <button class="cost-section__button" type="button" data-open-cost>получить подарок</button>
+            </div>
+        </section>
+
         <div class="spacer-min"></div>
         <div class="button-container">
-            <a href="https://vk.com/stepanartemovich" target="_blank">
+            <a href="https://vk.com/stepanartemovich" target="_blank" rel="noreferrer">
                 <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/buttonVK.png?raw=true" alt="ВК" class="vk-button">
             </a>
-            <a href="http://t.me/stepan_artt" target="_blank">
+            <a href="http://t.me/stepan_artt" target="_blank" rel="noreferrer">
                 <img src="https://github.com/SeniorDungeonMaster/Photos/blob/main/buttonTG.png?raw=true" alt="TG" class="tg-button">
             </a>
             <a href="tel:+79824360244">
@@ -66,5 +78,104 @@
         </div>
         <div class="spacer"></div>
     </div>
+
+    <div class="quiz-modal" id="costQuiz" aria-hidden="true">
+        <div class="quiz-modal__backdrop" data-close-cost></div>
+        <section class="quiz-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="quiz-heading">
+            <button class="quiz-modal__close" type="button" aria-label="Закрыть анкету" data-close-cost>&times;</button>
+
+            <div class="quiz-modal__header">
+                <h2 id="quiz-heading">Рассчитайте стоимость, ответив на вопросы ниже, и получите подарок</h2>
+                <div class="quiz-progress" aria-hidden="true">
+                    <span class="quiz-progress__bar"></span>
+                </div>
+            </div>
+
+            <form class="quiz-form" id="costForm">
+                <div class="quiz-step is-active" data-step="0">
+                    <p class="quiz-question">Выберите подарок, нажав на него</p>
+                    <div class="quiz-options quiz-options--gift">
+                        <label class="gift-option">
+                            <input type="radio" name="gift" value="Получить подарок" required>
+                            <span class="gift-option__visual">
+                                <span>Подарок</span>
+                            </span>
+                            <span class="gift-option__text">Получить подарок</span>
+                        </label>
+                        <label class="gift-option gift-option--empty">
+                            <input type="radio" name="gift" value="Подарок не нужен" required>
+                            <span class="gift-option__visual">
+                                <span>Подарок<br>не нужен</span>
+                            </span>
+                            <span class="gift-option__text">Подарок не нужен</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="1">
+                    <p class="quiz-question">Напишите свое имя и укажите возраст</p>
+                    <div class="field-grid">
+                        <label class="field">
+                            <span>Ваше имя</span>
+                            <input type="text" name="name" autocomplete="name" placeholder="Например, Анна" required>
+                        </label>
+                        <label class="field">
+                            <span>Возраст</span>
+                            <input type="number" name="age" inputmode="numeric" min="5" max="99" placeholder="Например, 24" required>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="2">
+                    <p class="quiz-question">Какое направление вы выбираете?</p>
+                    <div class="quiz-options quiz-options--direction">
+                        <label class="direction-option">
+                            <input type="radio" name="direction" value="Ведущий мероприятий" required>
+                            <span>Ведущий мероприятий</span>
+                        </label>
+                        <label class="direction-option">
+                            <input type="radio" name="direction" value="Уроки вокала" required>
+                            <span>Уроки вокала</span>
+                        </label>
+                        <label class="direction-option">
+                            <input type="radio" name="direction" value="Музыкальные инструменты" required>
+                            <span>Музыкальные инструменты</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="3">
+                    <label class="field field--textarea">
+                        <span>Расскажите о себе</span>
+                        <textarea name="about" rows="6" placeholder="Можно написать опыт, цель обучения или вопрос. Это поле не обязательно."></textarea>
+                    </label>
+                </div>
+
+                <div class="quiz-step" data-step="4">
+                    <label class="field field--textarea">
+                        <span>Где с вами связаться?</span>
+                        <textarea name="contact" rows="5" placeholder="Телефон, Telegram, VK или другая ссылка" required></textarea>
+                    </label>
+                </div>
+
+                <div class="quiz-result" hidden>
+                    <h3>Анкета готова</h3>
+                    <p>Сообщение скопируется в буфер. Откройте Telegram и отправьте его Степану.</p>
+                    <textarea id="quizSummary" readonly aria-label="Текст заявки"></textarea>
+                    <a class="quiz-result__link" href="https://t.me/stepan_artt" target="_blank" rel="noreferrer">Открыть Telegram</a>
+                </div>
+
+                <div class="quiz-footer">
+                    <p class="quiz-count" aria-live="polite">Шаг: <span id="quizStepCurrent">1</span>/<span id="quizStepTotal">5</span></p>
+                    <div class="quiz-controls">
+                        <button class="quiz-prev" type="button" aria-label="Предыдущий вопрос" disabled>&#8592;</button>
+                        <button class="quiz-next" type="button">Следующий вопрос &#8594;</button>
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
