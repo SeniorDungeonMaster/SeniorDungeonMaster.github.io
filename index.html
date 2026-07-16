@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600&family=Oswald:wght@300;400;500&family=Poiret+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="apple-touch-icon" href="/0200-clip-illustration-m.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/0200-clip-illustration-m.png">
@@ -159,10 +159,12 @@
                 </div>
 
                 <div class="quiz-result" hidden>
-                    <h3>Анкета готова</h3>
-                    <p>Сообщение скопируется в буфер. Откройте Telegram и отправьте его Степану.</p>
-                    <textarea id="quizSummary" readonly aria-label="Текст заявки"></textarea>
-                    <a class="quiz-result__link" href="https://t.me/stepan_artt" target="_blank" rel="noreferrer">Открыть Telegram</a>
+                    <div class="quiz-thanks">
+                        <h3>СПАСИБО<br>ЗА ВАШ ИНТЕРЕС!</h3>
+                        <p><strong>Вы получите ответ</strong><br>в самые короткие сроки.</p>
+                        <p>А пока смотрите сайт далее,<br>там много всего интересного!</p>
+                    </div>
+                    <textarea id="quizSummary" readonly hidden aria-hidden="true"></textarea>
                 </div>
 
                 <div class="quiz-footer">
