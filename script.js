@@ -1,183 +1,202 @@
-const modal = document.getElementById("costQuiz");
-const thanksModal = document.getElementById("thanksPopup");
-const openButtons = document.querySelectorAll("[data-open-cost]");
-const closeButtons = document.querySelectorAll("[data-close-cost]");
-const thanksCloseButtons = document.querySelectorAll("[data-close-thanks]");
-const form = document.getElementById("costForm");
-const steps = Array.from(document.querySelectorAll(".quiz-step"));
-const prevButton = document.querySelector(".quiz-prev");
-const nextButton = document.querySelector(".quiz-next");
-const progressBar = document.querySelector(".quiz-progress__bar");
-const currentStepText = document.getElementById("quizStepCurrent");
-const totalStepText = document.getElementById("quizStepTotal");
-const summaryField = document.getElementById("quizSummary");
+document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("costQuiz");
+    const thanksModal = document.getElementById("thanksPopup");
+    const openButtons = document.querySelectorAll("[data-open-cost]");
+    const closeButtons = document.querySelectorAll("[data-close-cost]");
+    const thanksCloseButtons = document.querySelectorAll("[data-close-thanks]");
+    const form = document.getElementById("costForm");
+    const steps = Array.from(document.querySelectorAll(".quiz-step"));
+    const prevButton = document.querySelector(".quiz-prev");
+    const nextButton = document.querySelector(".quiz-next");
+    const progressBar = document.querySelector(".quiz-progress__bar");
+    const currentStepText = document.getElementById("quizStepCurrent");
+    const totalStepText = document.getElementById("quizStepTotal");
+    const summaryField = document.getElementById("quizSummary");
+    const quizFooter = document.querySelector(".quiz-footer");
 
-let currentStep = 0;
-let thanksCloseTimer;
-
-totalStepText.textContent = String(steps.length);
-
-function setStep(index) {
-    currentStep = Math.max(0, Math.min(index, steps.length - 1));
-
-    steps.forEach((step, stepIndex) => {
-        step.classList.toggle("is-active", stepIndex === currentStep);
-    });
-
-    currentStepText.textContent = String(currentStep + 1);
-    progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
-    prevButton.disabled = currentStep === 0;
-    nextButton.textContent = currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
-}
-
-function openModal() {
-    closeThanksModal();
-    form.reset();
-    document.querySelector(".quiz-footer").hidden = false;
-    summaryField.value = "";
-    modal.classList.add("is-open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("quiz-lock");
-    setStep(0);
-    setTimeout(() => nextButton.focus(), 0);
-}
-
-function closeModal() {
-    modal.classList.remove("is-open");
-    modal.setAttribute("aria-hidden", "true");
-
-    if (!thanksModal.classList.contains("is-open")) {
-        document.body.classList.remove("quiz-lock");
+    if (!modal || !form || !prevButton || !nextButton || !progressBar || !currentStepText || !totalStepText || !summaryField || !quizFooter || steps.length === 0) {
+        return;
     }
-}
 
-function openThanksModal() {
-    clearTimeout(thanksCloseTimer);
-    thanksModal.classList.add("is-open");
-    thanksModal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("quiz-lock");
-    thanksCloseTimer = setTimeout(closeThanksModal, 7000);
-}
+    let currentStep = 0;
+    let thanksCloseTimer;
 
-function closeThanksModal() {
-    clearTimeout(thanksCloseTimer);
-    thanksModal.classList.remove("is-open");
-    thanksModal.setAttribute("aria-hidden", "true");
+    totalStepText.textContent = String(steps.length);
 
-    if (!modal.classList.contains("is-open")) {
-        document.body.classList.remove("quiz-lock");
+    function setStep(index) {
+        currentStep = Math.max(0, Math.min(index, steps.length - 1));
+
+        steps.forEach((step, stepIndex) => {
+            step.classList.toggle("is-active", stepIndex === currentStep);
+        });
+
+        currentStepText.textContent = String(currentStep + 1);
+        progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
+        prevButton.disabled = currentStep === 0;
+        nextButton.textContent = currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
     }
-}
 
-function validateCurrentStep() {
-    const fields = Array.from(steps[currentStep].querySelectorAll("input, textarea"));
-    const radioNames = new Set();
+    function openModal() {
+        closeThanksModal();
+        form.reset();
+        quizFooter.hidden = false;
+        summaryField.value = "";
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("quiz-lock");
+        setStep(0);
+        setTimeout(() => nextButton.focus(), 0);
+    }
 
-    for (const field of fields) {
-        if (field.type === "radio") {
-            if (radioNames.has(field.name)) {
+    function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+
+        if (!thanksModal || !thanksModal.classList.contains("is-open")) {
+            document.body.classList.remove("quiz-lock");
+        }
+    }
+
+    function openThanksModal() {
+        if (!thanksModal) {
+            return;
+        }
+
+        clearTimeout(thanksCloseTimer);
+        thanksModal.classList.add("is-open");
+        thanksModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("quiz-lock");
+        thanksCloseTimer = setTimeout(closeThanksModal, 7000);
+    }
+
+    function closeThanksModal() {
+        clearTimeout(thanksCloseTimer);
+
+        if (!thanksModal) {
+            return;
+        }
+
+        thanksModal.classList.remove("is-open");
+        thanksModal.setAttribute("aria-hidden", "true");
+
+        if (!modal.classList.contains("is-open")) {
+            document.body.classList.remove("quiz-lock");
+        }
+    }
+
+    function validateCurrentStep() {
+        const fields = Array.from(steps[currentStep].querySelectorAll("input, textarea"));
+        const radioNames = new Set();
+
+        for (const field of fields) {
+            if (field.type === "radio") {
+                if (radioNames.has(field.name)) {
+                    continue;
+                }
+
+                radioNames.add(field.name);
+
+                if (field.required && !steps[currentStep].querySelector(`input[name="${field.name}"]:checked`)) {
+                    field.reportValidity();
+                    return false;
+                }
+
                 continue;
             }
-            radioNames.add(field.name);
-            const checkedRadio = steps[currentStep].querySelector(`input[name="${field.name}"]:checked`);
-            if (field.required && !checkedRadio) {
+
+            if (!field.checkValidity()) {
                 field.reportValidity();
                 return false;
             }
-            continue;
         }
 
-        if (!field.checkValidity()) {
-            field.reportValidity();
-            return false;
+        return true;
+    }
+
+    function getFormValue(name) {
+        const data = new FormData(form);
+        return String(data.get(name) || "").trim();
+    }
+
+    function buildSummary() {
+        const about = getFormValue("about");
+
+        return [
+            "Заявка на расчет стоимости",
+            "",
+            `Подарок: ${getFormValue("gift")}`,
+            `Имя: ${getFormValue("name")}`,
+            `Возраст: ${getFormValue("age")}`,
+            `Направление: ${getFormValue("direction")}`,
+            `О себе: ${about || "Не указано"}`,
+            `Где связаться: ${getFormValue("contact")}`
+        ].join("\n");
+    }
+
+    function showResult() {
+        const summary = buildSummary();
+
+        summaryField.value = summary;
+
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(summary).catch(() => {});
         }
-    }
 
-    return true;
-}
-
-function getFormValue(name) {
-    const data = new FormData(form);
-    return String(data.get(name) || "").trim();
-}
-
-function buildSummary() {
-    const about = getFormValue("about");
-
-    return [
-        "Заявка на расчет стоимости",
-        "",
-        `Подарок: ${getFormValue("gift")}`,
-        `Имя: ${getFormValue("name")}`,
-        `Возраст: ${getFormValue("age")}`,
-        `Направление: ${getFormValue("direction")}`,
-        `О себе: ${about || "Не указано"}`,
-        `Где связаться: ${getFormValue("contact")}`
-    ].join("\n");
-}
-
-function showResult() {
-    const summary = buildSummary();
-
-    summaryField.value = summary;
-    if (navigator.clipboard) {
-        navigator.clipboard.writeText(summary).catch(() => {});
-    }
-
-    closeModal();
-    openThanksModal();
-}
-
-openButtons.forEach((button) => {
-    button.addEventListener("click", openModal);
-});
-
-closeButtons.forEach((button) => {
-    button.addEventListener("click", closeModal);
-});
-
-thanksCloseButtons.forEach((button) => {
-    button.addEventListener("click", closeThanksModal);
-});
-
-prevButton.addEventListener("click", () => {
-    setStep(currentStep - 1);
-});
-
-nextButton.addEventListener("click", () => {
-    if (!validateCurrentStep()) {
-        return;
-    }
-
-    if (currentStep === steps.length - 1) {
-        form.requestSubmit();
-        return;
-    }
-
-    setStep(currentStep + 1);
-});
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    if (!validateCurrentStep()) {
-        return;
-    }
-
-    showResult();
-});
-
-document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") {
-        return;
-    }
-
-    if (thanksModal.classList.contains("is-open")) {
-        closeThanksModal();
-        return;
-    }
-
-    if (modal.classList.contains("is-open")) {
         closeModal();
+        openThanksModal();
     }
+
+    openButtons.forEach((button) => {
+        button.addEventListener("click", openModal);
+    });
+
+    closeButtons.forEach((button) => {
+        button.addEventListener("click", closeModal);
+    });
+
+    thanksCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeThanksModal);
+    });
+
+    prevButton.addEventListener("click", () => {
+        setStep(currentStep - 1);
+    });
+
+    nextButton.addEventListener("click", () => {
+        if (!validateCurrentStep()) {
+            return;
+        }
+
+        if (currentStep === steps.length - 1) {
+            form.requestSubmit();
+            return;
+        }
+
+        setStep(currentStep + 1);
+    });
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!validateCurrentStep()) {
+            return;
+        }
+
+        showResult();
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") {
+            return;
+        }
+
+        if (thanksModal && thanksModal.classList.contains("is-open")) {
+            closeThanksModal();
+            return;
+        }
+
+        if (modal.classList.contains("is-open")) {
+            closeModal();
+        }
+    });
 });
