@@ -1,6 +1,8 @@
 const modal = document.getElementById("costQuiz");
+const thanksModal = document.getElementById("thanksPopup");
 const openButtons = document.querySelectorAll("[data-open-cost]");
 const closeButtons = document.querySelectorAll("[data-close-cost]");
+const thanksCloseButtons = document.querySelectorAll("[data-close-thanks]");
 const form = document.getElementById("costForm");
 const steps = Array.from(document.querySelectorAll(".quiz-step"));
 const prevButton = document.querySelector(".quiz-prev");
@@ -8,11 +10,10 @@ const nextButton = document.querySelector(".quiz-next");
 const progressBar = document.querySelector(".quiz-progress__bar");
 const currentStepText = document.getElementById("quizStepCurrent");
 const totalStepText = document.getElementById("quizStepTotal");
-const result = document.querySelector(".quiz-result");
 const summaryField = document.getElementById("quizSummary");
 
 let currentStep = 0;
-let closeResultTimer;
+let thanksCloseTimer;
 
 totalStepText.textContent = String(steps.length);
 
@@ -30,9 +31,8 @@ function setStep(index) {
 }
 
 function openModal() {
-    clearTimeout(closeResultTimer);
+    closeThanksModal();
     form.reset();
-    result.hidden = true;
     document.querySelector(".quiz-footer").hidden = false;
     summaryField.value = "";
     modal.classList.add("is-open");
@@ -43,10 +43,30 @@ function openModal() {
 }
 
 function closeModal() {
-    clearTimeout(closeResultTimer);
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("quiz-lock");
+
+    if (!thanksModal.classList.contains("is-open")) {
+        document.body.classList.remove("quiz-lock");
+    }
+}
+
+function openThanksModal() {
+    clearTimeout(thanksCloseTimer);
+    thanksModal.classList.add("is-open");
+    thanksModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("quiz-lock");
+    thanksCloseTimer = setTimeout(closeThanksModal, 7000);
+}
+
+function closeThanksModal() {
+    clearTimeout(thanksCloseTimer);
+    thanksModal.classList.remove("is-open");
+    thanksModal.setAttribute("aria-hidden", "true");
+
+    if (!modal.classList.contains("is-open")) {
+        document.body.classList.remove("quiz-lock");
+    }
 }
 
 function validateCurrentStep() {
@@ -100,16 +120,12 @@ function showResult() {
     const summary = buildSummary();
 
     summaryField.value = summary;
-    steps.forEach((step) => step.classList.remove("is-active"));
-    result.hidden = false;
-    document.querySelector(".quiz-footer").hidden = true;
-    progressBar.style.width = "100%";
-
     if (navigator.clipboard) {
         navigator.clipboard.writeText(summary).catch(() => {});
     }
 
-    closeResultTimer = setTimeout(closeModal, 7000);
+    closeModal();
+    openThanksModal();
 }
 
 openButtons.forEach((button) => {
@@ -118,6 +134,10 @@ openButtons.forEach((button) => {
 
 closeButtons.forEach((button) => {
     button.addEventListener("click", closeModal);
+});
+
+thanksCloseButtons.forEach((button) => {
+    button.addEventListener("click", closeThanksModal);
 });
 
 prevButton.addEventListener("click", () => {
@@ -148,7 +168,16 @@ form.addEventListener("submit", (event) => {
 });
 
 document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && modal.classList.contains("is-open")) {
+    if (event.key !== "Escape") {
+        return;
+    }
+
+    if (thanksModal.classList.contains("is-open")) {
+        closeThanksModal();
+        return;
+    }
+
+    if (modal.classList.contains("is-open")) {
         closeModal();
     }
 });
