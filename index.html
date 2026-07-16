@@ -158,14 +158,7 @@
                     </label>
                 </div>
 
-                <div class="quiz-result" hidden>
-                    <div class="quiz-thanks">
-                        <h3>СПАСИБО<br>ЗА ВАШ ИНТЕРЕС!</h3>
-                        <p><strong>Вы получите ответ</strong><br>в самые короткие сроки.</p>
-                        <p>А пока смотрите сайт далее,<br>там много всего интересного!</p>
-                    </div>
-                    <textarea id="quizSummary" readonly hidden aria-hidden="true"></textarea>
-                </div>
+                <textarea id="quizSummary" readonly hidden aria-hidden="true"></textarea>
 
                 <div class="quiz-footer">
                     <p class="quiz-count" aria-live="polite">Шаг: <span id="quizStepCurrent">1</span>/<span id="quizStepTotal">5</span></p>
@@ -175,6 +168,18 @@
                     </div>
                 </div>
             </form>
+        </section>
+    </div>
+
+    <div class="thanks-modal" id="thanksPopup" aria-hidden="true">
+        <div class="thanks-modal__backdrop" data-close-thanks></div>
+        <section class="thanks-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="thanks-heading">
+            <button class="thanks-modal__close" type="button" aria-label="Закрыть сообщение" data-close-thanks>&times;</button>
+            <div class="quiz-thanks">
+                <h3 id="thanks-heading">СПАСИБО<br>ЗА ВАШ ИНТЕРЕС!</h3>
+                <p><strong>Вы получите ответ</strong><br>в самые короткие сроки.</p>
+                <p>А пока смотрите сайт далее,<br>там много всего интересного!</p>
+            </div>
         </section>
     </div>
 
