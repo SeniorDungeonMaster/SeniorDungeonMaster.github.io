@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     const TELEGRAM_BOT_TOKEN_PARTS = [
-        "/8928965855:",
+        "8928965855:",
         "AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U"    
     ];
     const TELEGRAM_CHAT_IDS = [
