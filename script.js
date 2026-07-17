@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // This only masks the token visually. Anyone can still read it in DevTools.
+
     const TELEGRAM_BOT_TOKEN_PARTS = [
-        "PASTE_TOKEN_PART_1",
-        "PASTE_TOKEN_PART_2"
+        "8928965855",
+        ":AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U"
     ];
     const TELEGRAM_CHAT_IDS = [
-        "PASTE_CHAT_ID"
+        "552994309"
     ];
 
     const modal = document.getElementById("costQuiz");
