@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-    
+    // This only masks the token visually. Anyone can still read it in DevTools.
     const TELEGRAM_BOT_TOKEN_PARTS = [
-        "8928965855:",
-        "AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U"    
+        "PASTE_TOKEN_PART_1",
+        "PASTE_TOKEN_PART_2"
     ];
     const TELEGRAM_CHAT_IDS = [
-        "552994309"
+        "PASTE_CHAT_ID"
     ];
 
     const modal = document.getElementById("costQuiz");
@@ -205,21 +205,17 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const token = getTelegramBotToken();
-        const url = `https://api.telegram.org/bot${token}/sendMessage`;
         const requests = getTelegramChatIds().map((chatId) => {
-            const body = new URLSearchParams({
+            const params = new URLSearchParams({
                 chat_id: chatId,
                 text,
                 disable_web_page_preview: "true"
             });
+            const url = `https://api.telegram.org/bot${token}/sendMessage?${params.toString()}`;
 
             return fetch(url, {
                 method: "POST",
-                mode: "no-cors",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded"
-                },
-                body
+                mode: "no-cors"
             });
         });
 
