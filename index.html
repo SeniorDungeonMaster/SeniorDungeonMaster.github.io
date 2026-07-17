@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <form class="quiz-form" id="costForm">
+            <form class="quiz-form" id="costForm" data-api-url="/lead">
                 <div class="quiz-step is-active" data-step="0">
                     <p class="quiz-question">Выберите подарок, нажав на него</p>
                     <div class="quiz-options quiz-options--gift">
@@ -167,6 +167,7 @@
                         <button class="quiz-next" type="button">Следующий вопрос &#8594;</button>
                     </div>
                 </div>
+                <p class="quiz-error" id="quizError" hidden>Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз.</p>
             </form>
         </section>
     </div>
@@ -178,6 +179,7 @@
             <div class="quiz-thanks">
                 <h3 id="thanks-heading">СПАСИБО<br>ЗА ВАШ ИНТЕРЕС!</h3>
                 <p><strong>Вы получите ответ</strong><br>в самые короткие сроки.</p>
+                <p>А пока смотрите сайт далее,<br>там много всего интересного!</p>
             </div>
         </section>
     </div>
