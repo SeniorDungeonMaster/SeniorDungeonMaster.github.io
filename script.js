@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalStepText = document.getElementById("quizStepTotal");
     const summaryField = document.getElementById("quizSummary");
     const quizFooter = document.querySelector(".quiz-footer");
+    const quizError = document.getElementById("quizError");
 
     if (!modal || !form || !prevButton || !nextButton || !progressBar || !currentStepText || !totalStepText || !summaryField || !quizFooter || steps.length === 0) {
         return;
@@ -20,8 +21,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentStep = 0;
     let thanksCloseTimer;
+    let isSending = false;
 
     totalStepText.textContent = String(steps.length);
+
+    function getLeadApiUrl() {
+        return form.dataset.apiUrl || window.LEAD_API_URL || "";
+    }
+
+    function setError(message = "") {
+        if (!quizError) {
+            return;
+        }
+
+        quizError.textContent = message;
+        quizError.hidden = !message;
+    }
+
+    function setSending(sending) {
+        isSending = sending;
+        prevButton.disabled = sending || currentStep === 0;
+        nextButton.disabled = sending;
+        nextButton.textContent = sending ? "Отправляем..." : getNextButtonText();
+    }
+
+    function getNextButtonText() {
+        return currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
+    }
 
     function setStep(index) {
         currentStep = Math.max(0, Math.min(index, steps.length - 1));
@@ -33,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentStepText.textContent = String(currentStep + 1);
         progressBar.style.width = `${((currentStep + 1) / steps.length) * 100}%`;
         prevButton.disabled = currentStep === 0;
-        nextButton.textContent = currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
+        nextButton.textContent = getNextButtonText();
+        setError("");
     }
 
     function openModal() {
@@ -41,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
         form.reset();
         quizFooter.hidden = false;
         summaryField.value = "";
+        setError("");
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
         document.body.classList.add("quiz-lock");
@@ -118,23 +146,54 @@ document.addEventListener("DOMContentLoaded", () => {
         return String(data.get(name) || "").trim();
     }
 
-    function buildSummary() {
-        const about = getFormValue("about");
+    function buildPayload() {
+        return {
+            gift: getFormValue("gift"),
+            name: getFormValue("name"),
+            age: getFormValue("age"),
+            direction: getFormValue("direction"),
+            about: getFormValue("about"),
+            contact: getFormValue("contact"),
+            page: window.location.href
+        };
+    }
 
+    function buildSummary(payload) {
         return [
             "Заявка на расчет стоимости",
             "",
-            `Подарок: ${getFormValue("gift")}`,
-            `Имя: ${getFormValue("name")}`,
-            `Возраст: ${getFormValue("age")}`,
-            `Направление: ${getFormValue("direction")}`,
-            `О себе: ${about || "Не указано"}`,
-            `Где связаться: ${getFormValue("contact")}`
+            `Подарок: ${payload.gift}`,
+            `Имя: ${payload.name}`,
+            `Возраст: ${payload.age}`,
+            `Направление: ${payload.direction}`,
+            `О себе: ${payload.about || "Не указано"}`,
+            `Где связаться: ${payload.contact}`
         ].join("\n");
     }
 
-    function showResult() {
-        const summary = buildSummary();
+    async function sendLead(payload) {
+        const apiUrl = getLeadApiUrl();
+
+        if (!apiUrl) {
+            return;
+        }
+
+        const response = await fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Lead API returned ${response.status}`);
+        }
+    }
+
+    async function showResult() {
+        const payload = buildPayload();
+        const summary = buildSummary(payload);
 
         summaryField.value = summary;
 
@@ -142,8 +201,18 @@ document.addEventListener("DOMContentLoaded", () => {
             navigator.clipboard.writeText(summary).catch(() => {});
         }
 
-        closeModal();
-        openThanksModal();
+        setSending(true);
+
+        try {
+            await sendLead(payload);
+            closeModal();
+            openThanksModal();
+        } catch (error) {
+            console.error(error);
+            setError("Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз.");
+        } finally {
+            setSending(false);
+        }
     }
 
     openButtons.forEach((button) => {
@@ -159,11 +228,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     prevButton.addEventListener("click", () => {
-        setStep(currentStep - 1);
+        if (!isSending) {
+            setStep(currentStep - 1);
+        }
     });
 
     nextButton.addEventListener("click", () => {
-        if (!validateCurrentStep()) {
+        if (isSending || !validateCurrentStep()) {
             return;
         }
 
@@ -178,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (event) => {
         event.preventDefault();
 
-        if (!validateCurrentStep()) {
+        if (isSending || !validateCurrentStep()) {
             return;
         }
 
