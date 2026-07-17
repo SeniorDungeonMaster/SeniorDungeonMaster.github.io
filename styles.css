@@ -122,6 +122,14 @@ img {
     font-family: "Jost", Arial, sans-serif;
 }
 
+.cost-section-contacts {
+    width: 100%;
+    background: #ffffff;
+    color: #000000;
+    font-family: "Jost", Arial, sans-serif;
+    align-items: center;
+}
+
 .cost-section__inner {
     min-height: clamp(270px, 42vw, 430px);
     padding: clamp(36px, 7vw, 76px) clamp(24px, 7vw, 80px);
