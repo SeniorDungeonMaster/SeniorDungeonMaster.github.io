@@ -141,6 +141,7 @@ img {
 }
 
 .cost-section h2 {
+    text-align: center;
     font-family: "Jost", Arial, sans-serif;
     font-size: clamp(42px, 8.4vw, 88px);
     font-weight: 300;
