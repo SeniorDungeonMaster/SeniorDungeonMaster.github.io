@@ -141,7 +141,6 @@ img {
 }
 
 .cost-section h2 {
-    margin: 0 0 clamp(26px, 5vw, 44px);
     font-family: "Jost", Arial, sans-serif;
     font-size: clamp(42px, 8.4vw, 88px);
     font-weight: 300;
