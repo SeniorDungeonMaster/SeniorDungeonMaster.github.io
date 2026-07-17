@@ -1,4 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
+    // This only masks the token visually. Anyone can still read it in DevTools.
+    const TELEGRAM_BOT_TOKEN_PARTS = [
+        "PASTE_TOKEN_PART_1",
+        "PASTE_TOKEN_PART_2"
+    ];
+    const TELEGRAM_CHAT_IDS = [
+        "PASTE_CHAT_ID"
+    ];
+
     const modal = document.getElementById("costQuiz");
     const thanksModal = document.getElementById("thanksPopup");
     const openButtons = document.querySelectorAll("[data-open-cost]");
@@ -25,8 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     totalStepText.textContent = String(steps.length);
 
-    function getLeadApiUrl() {
-        return form.dataset.apiUrl || window.LEAD_API_URL || "";
+    function getTelegramBotToken() {
+        return TELEGRAM_BOT_TOKEN_PARTS.join("").trim();
+    }
+
+    function getTelegramChatIds() {
+        return TELEGRAM_CHAT_IDS.map((chatId) => String(chatId).trim()).filter(Boolean);
+    }
+
+    function getNextButtonText() {
+        return currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
     }
 
     function setError(message = "") {
@@ -43,10 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
         prevButton.disabled = sending || currentStep === 0;
         nextButton.disabled = sending;
         nextButton.textContent = sending ? "Отправляем..." : getNextButtonText();
-    }
-
-    function getNextButtonText() {
-        return currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
     }
 
     function setStep(index) {
@@ -153,8 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
             age: getFormValue("age"),
             direction: getFormValue("direction"),
             about: getFormValue("about"),
-            contact: getFormValue("contact"),
-            page: window.location.href
+            contact: getFormValue("contact")
         };
     }
 
@@ -171,24 +183,44 @@ document.addEventListener("DOMContentLoaded", () => {
         ].join("\n");
     }
 
-    async function sendLead(payload) {
-        const apiUrl = getLeadApiUrl();
+    function copySummary(summary) {
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(summary).catch(() => {});
+        }
+    }
 
-        if (!apiUrl) {
-            return;
+    function telegramIsConfigured() {
+        const token = getTelegramBotToken();
+        const chatIds = getTelegramChatIds();
+
+        return Boolean(token) &&
+            !token.includes("PASTE_") &&
+            chatIds.length > 0 &&
+            chatIds.every((chatId) => !chatId.includes("PASTE_"));
+    }
+
+    async function sendTelegramMessage(text) {
+        if (!telegramIsConfigured()) {
+            throw new Error("telegram_not_configured");
         }
 
-        const response = await fetch(apiUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(payload)
+        const token = getTelegramBotToken();
+        const url = `https://api.telegram.org/bot${token}/sendMessage`;
+        const requests = getTelegramChatIds().map((chatId) => {
+            const body = new URLSearchParams({
+                chat_id: chatId,
+                text,
+                disable_web_page_preview: "true"
+            });
+
+            return fetch(url, {
+                method: "POST",
+                mode: "no-cors",
+                body
+            });
         });
 
-        if (!response.ok) {
-            throw new Error(`Lead API returned ${response.status}`);
-        }
+        await Promise.all(requests);
     }
 
     async function showResult() {
@@ -196,20 +228,16 @@ document.addEventListener("DOMContentLoaded", () => {
         const summary = buildSummary(payload);
 
         summaryField.value = summary;
-
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(summary).catch(() => {});
-        }
-
+        copySummary(summary);
         setSending(true);
 
         try {
-            await sendLead(payload);
+            await sendTelegramMessage(summary);
             closeModal();
             openThanksModal();
         } catch (error) {
             console.error(error);
-            setError("Не получилось отправить заявку. Проверьте интернет и попробуйте ещё раз.");
+            setError("Не получилось отправить заявку. Проверьте токен и chat_id Telegram-бота.");
         } finally {
             setSending(false);
         }
