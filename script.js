@@ -216,6 +216,9 @@ document.addEventListener("DOMContentLoaded", () => {
             return fetch(url, {
                 method: "POST",
                 mode: "no-cors",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
                 body
             });
         });
