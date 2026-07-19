@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ":AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U"
     ];
     const TELEGRAM_CHAT_IDS = [
-        "1287738269"
+        "1287738269",
+        "742954499"
     ];
 
     const modal = document.getElementById("costQuiz");
