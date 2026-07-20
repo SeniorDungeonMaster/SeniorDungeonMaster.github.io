@@ -1,13 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-
-    const TELEGRAM_BOT_TOKEN_PARTS = [
-        "8928965855",
-        ":AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U"
-    ];
+    const TELEGRAM_BOT_TOKEN = "8928965855:AAGhEEaRqv48p1zIDyhE9T5rAy-0iJtX7-U";
     const TELEGRAM_CHAT_IDS = [
         "1287738269",
         "742954499"
     ];
+    const TELEGRAM_SEND_TIMEOUT_MS = 7000;
 
     const modal = document.getElementById("costQuiz");
     const thanksModal = document.getElementById("thanksPopup");
@@ -34,14 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let isSending = false;
 
     totalStepText.textContent = String(steps.length);
-
-    function getTelegramBotToken() {
-        return TELEGRAM_BOT_TOKEN_PARTS.join("").trim();
-    }
-
-    function getTelegramChatIds() {
-        return TELEGRAM_CHAT_IDS.map((chatId) => String(chatId).trim()).filter(Boolean);
-    }
 
     function getNextButtonText() {
         return currentStep === steps.length - 1 ? "Отправить заявку" : "Следующий вопрос →";
@@ -190,8 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    function getTelegramChatIds() {
+        return TELEGRAM_CHAT_IDS.map((chatId) => String(chatId).trim()).filter(Boolean);
+    }
+
     function telegramIsConfigured() {
-        const token = getTelegramBotToken();
+        const token = TELEGRAM_BOT_TOKEN.trim();
         const chatIds = getTelegramChatIds();
 
         return Boolean(token) &&
@@ -200,24 +193,38 @@ document.addEventListener("DOMContentLoaded", () => {
             chatIds.every((chatId) => !chatId.includes("PASTE_"));
     }
 
+    async function sendTelegramRequest(url, body) {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), TELEGRAM_SEND_TIMEOUT_MS);
+
+        try {
+            await fetch(url, {
+                method: "POST",
+                mode: "no-cors",
+                body,
+                signal: controller.signal,
+                keepalive: true
+            });
+        } finally {
+            clearTimeout(timeoutId);
+        }
+    }
+
     async function sendTelegramMessage(text) {
         if (!telegramIsConfigured()) {
             throw new Error("telegram_not_configured");
         }
 
-        const token = getTelegramBotToken();
+        const telegramText = text.length > 3900 ? `${text.slice(0, 3900)}\n...` : text;
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN.trim()}/sendMessage`;
         const requests = getTelegramChatIds().map((chatId) => {
-            const params = new URLSearchParams({
+            const body = new URLSearchParams({
                 chat_id: chatId,
-                text,
+                text: telegramText,
                 disable_web_page_preview: "true"
             });
-            const url = `https://api.telegram.org/bot${token}/sendMessage?${params.toString()}`;
 
-            return fetch(url, {
-                method: "POST",
-                mode: "no-cors"
-            });
+            return sendTelegramRequest(url, body);
         });
 
         await Promise.all(requests);
@@ -237,7 +244,7 @@ document.addEventListener("DOMContentLoaded", () => {
             openThanksModal();
         } catch (error) {
             console.error(error);
-            setError("Не получилось отправить заявку. Проверьте токен и chat_id Telegram-бота.");
+            setError("Не получилось отправить заявку в Telegram. Проверьте токен, chat_id и доступ к api.telegram.org.");
         } finally {
             setSending(false);
         }
