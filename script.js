@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const LEAD_ENDPOINT = "PASTE_TELEGRAM_BOT_ENDPOINT/api/lead";
+    const LEAD_ENDPOINT = "https://tamada-tg-bot.onrender.com/api/lead";
     const LEAD_SEND_TIMEOUT_MS = 10000;
 
     const modal = document.getElementById("costQuiz");
